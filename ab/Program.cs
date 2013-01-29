@@ -6,8 +6,12 @@ namespace ab
     {
         static void Main(string[] args)
         {
-            int j = int.Parse(Console.ReadLine());
-            Console.WriteLine(GetLuckysAmount(j / 2));
+            string[] input = Console.ReadLine().Split(new []{' ', '\t'}, StringSplitOptions.RemoveEmptyEntries);
+            int nAmount = GetLuckysAmount(int.Parse(input[0]));
+            /*
+             * We calculated a number of lucky tickets with 2N digits. 
+             * We have to calculate a number of lucky tickets with ALL digits sum defined.
+             */
         }
 
         private static int GetLuckysAmount(int digitsAmount)
