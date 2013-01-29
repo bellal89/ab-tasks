@@ -8,7 +8,7 @@ namespace ab
 		static void Main(string[] args)
 		{
 			var sw = new Stopwatch();
-			for (int j = 2; j < 9; j += 2)
+			for (var j = 2; j < 9; j += 2)
 			{
 				sw.Start();
 				Console.WriteLine(j + ":\t" + GetLucky(j));
