@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace ab
 {
@@ -7,7 +8,12 @@ namespace ab
         static void Main(string[] args)
         {
             string[] input = Console.ReadLine().Split(new []{' ', '\t'}, StringSplitOptions.RemoveEmptyEntries);
-            int nAmount = GetLuckysAmount(int.Parse(input[0]));
+        	var sw = new Stopwatch();
+			sw.Start();
+            int nAmount = NAmountWithKSum(int.Parse(input[0]), int.Parse(input[1]) / 2);
+			Console.WriteLine(nAmount * nAmount);
+        	sw.Stop();
+			Console.WriteLine(sw.Elapsed);
             /*
              * We calculated a number of lucky tickets with 2N digits. 
              * We have to calculate a number of lucky tickets with ALL digits sum defined.
@@ -27,6 +33,8 @@ namespace ab
 
         private static int NAmountWithKSum(int n, int k)
         {
+			if (k > 9 * n)
+				return 0;
             if (n == 1)
                 return 0 <= k && k <= 9 ? 1 : 0;
             int sum = 0;
